@@ -5,7 +5,6 @@ public class Main {
         Phone phone2 = new Phone("+375299900995", "Xiaomi 13T Pro", "206 г");
         Phone phone3 = new Phone("+375443434567", "Huawei nova 11 Pro", "188 г");
         // вывод значений в консоль
-
         System.out.println("Phone 1: " + phone1);
         System.out.println("Phone 2: " + phone2);
         System.out.println("Phone 3: " + phone3);
