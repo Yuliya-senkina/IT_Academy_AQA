@@ -14,9 +14,6 @@ public class Main {
         System.out.println("Multiply double+int = "+calc.multiply(3.5,5));
         System.out.println("Div double+int = "+ calc.div(3.5,5));
         System.out.println("Sum string+string = "+calc.sum("23","17"));
-        System.out.println("Sum string+string = "+calc.sub("23","17"));
-        System.out.println("Sum string+string = "+calc.multiply("23","17"));
-        System.out.println("Sum string+string = "+calc.div("23","17"));
         System.out.println("Sub string+string = "+calc.sub("23","17"));
         System.out.println("Multiply string+string = "+calc.multiply("23","17"));
         System.out.println("Div string+string = "+calc.div("23","17"));
