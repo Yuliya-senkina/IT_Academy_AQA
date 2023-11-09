@@ -9,6 +9,7 @@ public class Main {
         WebDriver driver= new SafariDriver();
         driver.get("https://svyatoslav.biz/testlab/wt/index.php");
         // Input name
+
         String inputNameXpath="/html/body/table/tbody/tr[2]/td[2]/form/table/tbody/tr[2]/td[2]/input";
         By inputNameXpathBY= By.xpath(inputNameXpath);
         WebElement inputNameElement = driver.findElement(inputNameXpathBY);
