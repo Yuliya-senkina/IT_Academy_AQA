@@ -22,10 +22,9 @@ public class WeightCalcTest {
         WebElement getResultWebElement = driver.findElement(getResultBy);
 
         String actual = getResultWebElement.getText();
-        String expectedResult = "Не указано имя." +
-                "Рост должен быть в диапазоне 50-300 см." +
-                "Вес должен быть в диапазоне 3-500 кг." +
-                "Не указан пол.";
-        Assertions.assertEquals(expectedResult, actual);
+        Assertions.assertEquals("Не указано имя.\n" +
+                "Рост должен быть в диапазоне 50-300 см.\n" +
+                "Вес должен быть в диапазоне 3-500 кг.\n" +
+                "Не указан пол.", actual);
     }
 }
