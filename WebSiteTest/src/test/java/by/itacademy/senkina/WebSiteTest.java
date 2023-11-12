@@ -14,25 +14,21 @@ public class WebSiteTest {
         driver.manage().window().maximize();
         driver.get("https://www.onliner.by");
         String enterButtonLocator = "//*[@id=\"userbar\"]/div[1]/div/div/div[1]";
-        By enterButtonBy = By.xpath(enterButtonLocator);
-        WebElement enterButtonWebElement = driver.findElement(enterButtonBy);
+        WebElement enterButtonWebElement = driver.findElement(By.xpath(enterButtonLocator));
         enterButtonWebElement.click();
 
         String buttonEnterLocator = "//*[@id=\"auth-container\"]/div/div[2]/div/form/div[3]/button";
-        By buttonEnterBy = By.xpath(buttonEnterLocator);
-        WebElement buttonEnterElement = driver.findElement(buttonEnterBy);
+        WebElement buttonEnterElement = driver.findElement(By.xpath(buttonEnterLocator));
         buttonEnterElement.click();
         //Thread.sleep(4000);
         String errorMessageLoginLocator = "//*[@id=\"auth-container\"]/div/div[2]/div/form/div[3]";
-        By errorMessageLoginBy = By.xpath(errorMessageLoginLocator);
-        WebElement errorMessageLoginElement = driver.findElement(errorMessageLoginBy);
+        WebElement errorMessageLoginElement = driver.findElement(By.xpath(errorMessageLoginLocator));
         String actual = errorMessageLoginElement.getText();
         String expected = "Укажите ник или e-mail";
         Assertions.assertEquals(expected, actual);
 
         String errorMessagePasswordLocator = "//*[@id=\"auth-container\"]/div/div[2]/div/form/div[2]/div/div/div[2]/div";
-        By errorMessagePasswordBy = By.xpath(errorMessagePasswordLocator);
-        WebElement errorMessagePasswordElement = driver.findElement(errorMessagePasswordBy);
+        WebElement errorMessagePasswordElement = driver.findElement(By.xpath(errorMessagePasswordLocator));
         String actualPassword = errorMessagePasswordElement.getText();
         String expectedPassword = "Укажите пароль";
         Assertions.assertEquals(expectedPassword, actualPassword);
@@ -77,13 +73,11 @@ public class WebSiteTest {
         driver.manage().window().maximize();
         driver.navigate().to("https://javarush.com");
         String enterButtonLocator = "//*[@id=\"sapper\"]/main/div/div[2]/div/div/div[3]/header/div/div[4]";
-        By enterButtonBy = By.xpath(enterButtonLocator);
-        WebElement enterButtonElement = driver.findElement(enterButtonBy);
+        WebElement enterButtonElement = driver.findElement(By.xpath(enterButtonLocator));
         enterButtonElement.click();
         String enterTitleFormLocator = "//*[@id=\"id_button_jr_welcome_start_learning_1\"]";
-        By enterTitleFormBy = By.xpath(enterTitleFormLocator);
         Thread.sleep(4000);
-        WebElement enterTitleFormElement = driver.findElement(enterTitleFormBy);
+        WebElement enterTitleFormElement = driver.findElement(By.xpath(enterTitleFormLocator));
         String actual = enterTitleFormElement.getText();
         String expected = "НАЧАТЬ";
         Assertions.assertEquals(expected, actual);
