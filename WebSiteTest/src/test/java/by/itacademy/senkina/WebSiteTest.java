@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.safari.SafariDriver;
 
 public class WebSiteTest {
     @Test
@@ -15,15 +14,15 @@ public class WebSiteTest {
         driver.manage().window().maximize();
         driver.get("https://www.onliner.by");
         OnlinerPage onlinerPage = new OnlinerPage();
-        WebElement enterButtonWeb = driver.findElement(By.xpath(onlinerPage.enterButtonLocator));
+        WebElement enterButtonWeb = driver.findElement(By.xpath(onlinerPage.enterButton));
         enterButtonWeb.click();
-        WebElement buttonEnter = driver.findElement(By.xpath(onlinerPage.buttonEnterLocator));
+        WebElement buttonEnter = driver.findElement(By.xpath(onlinerPage.buttonEnter));
         buttonEnter.click();
         //Thread.sleep(4000);
-        WebElement errorMessageLogin = driver.findElement(By.xpath(onlinerPage.errorMessageLoginLocator));
+        WebElement errorMessageLogin = driver.findElement(By.xpath(onlinerPage.errorMessageLogin));
         String actual = errorMessageLogin.getText();
         Assertions.assertEquals("Укажите ник или e-mail", actual);
-        WebElement errorMessagePassword = driver.findElement(By.xpath(onlinerPage.errorMessagePasswordLocator));
+        WebElement errorMessagePassword = driver.findElement(By.xpath(onlinerPage.errorMessagePassword));
         String actualPassword = errorMessagePassword.getText();
         Assertions.assertEquals("Укажите пароль", actualPassword);
     }
@@ -34,17 +33,17 @@ public class WebSiteTest {
         driver.manage().window().maximize();
         driver.navigate().to("https://devby.io");
         DevByPage devByPage = new DevByPage();
-        WebElement enterButton = driver.findElement(By.xpath(devByPage.enterButtonLocator));
+        WebElement enterButton = driver.findElement(By.xpath(devByPage.enterButton));
         enterButton.click();
         Thread.sleep(4000);
-        WebElement inputTextLogin = driver.findElement(By.xpath(devByPage.inputTextLoginLocator));
+        WebElement inputTextLogin = driver.findElement(By.xpath(devByPage.inputTextLogin));
         inputTextLogin.sendKeys("webgetd");
-        WebElement inputTextPassword = driver.findElement(By.xpath(devByPage.inputTextPasswordLocator));
+        WebElement inputTextPassword = driver.findElement(By.xpath(devByPage.inputTextPassword));
         inputTextPassword.sendKeys("321");
-        WebElement enterButtonForm = driver.findElement(By.xpath(devByPage.enterButtonFormLocator));
+        WebElement enterButtonForm = driver.findElement(By.xpath(devByPage.enterButtonForm));
         enterButtonForm.click();
         Thread.sleep(4000);
-        WebElement textErrorLoginPassword = driver.findElement(By.xpath(devByPage.textErrorLoginPasswordLocator));
+        WebElement textErrorLoginPassword = driver.findElement(By.xpath(devByPage.textErrorLoginPassword));
         String actual = textErrorLoginPassword.getText();
         Assertions.assertEquals("Неверный логин или пароль.", actual);
         driver.quit();
@@ -53,14 +52,13 @@ public class WebSiteTest {
     @Test
     public void testJavaRush() throws InterruptedException {
         WebDriver driver = new ChromeDriver();
+        JavaRush javaRush = new JavaRush();
         driver.manage().window().maximize();
         driver.navigate().to("https://javarush.com");
-        String enterButtonLocator = "//*[@id=\"sapper\"]/main/div/div[2]/div/div/div[3]/header/div/div[4]";
-        WebElement enterButton = driver.findElement(By.xpath(enterButtonLocator));
+        WebElement enterButton = driver.findElement(By.xpath(javaRush.enterButton));
         enterButton.click();
-        String enterTitleFormLocator = "//*[@id=\"id_button_jr_welcome_start_learning_1\"]";
         Thread.sleep(4000);
-        WebElement enterTitleForm = driver.findElement(By.xpath(enterTitleFormLocator));
+        WebElement enterTitleForm = driver.findElement(By.xpath(javaRush.enterTitleForm));
         String actual = enterTitleForm.getText();
         Assertions.assertEquals("НАЧАТЬ", actual);
     }
@@ -71,7 +69,6 @@ public class WebSiteTest {
         driver.manage().window().maximize();
         driver.get("https://av.by/");
         AvBy avBy=new AvBy();
-
         WebElement enterButton = driver.findElement(By.xpath(avBy.buttonEnter));
         enterButton.click();
         Thread.sleep(2000);
