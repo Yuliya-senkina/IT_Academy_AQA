@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class WebSiteTest {
     @Test
@@ -13,21 +14,16 @@ public class WebSiteTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.onliner.by");
-        String enterButtonLocator = "//*[@id=\"userbar\"]/div[1]/div/div/div[1]";
-        WebElement enterButtonWeb = driver.findElement(By.xpath(enterButtonLocator));
+        OnlinerPage onlinerPage = new OnlinerPage();
+        WebElement enterButtonWeb = driver.findElement(By.xpath(onlinerPage.enterButtonLocator));
         enterButtonWeb.click();
-
-        String buttonEnterLocator = "//*[@id=\"auth-container\"]/div/div[2]/div/form/div[3]/button";
-        WebElement buttonEnter = driver.findElement(By.xpath(buttonEnterLocator));
+        WebElement buttonEnter = driver.findElement(By.xpath(onlinerPage.buttonEnterLocator));
         buttonEnter.click();
         //Thread.sleep(4000);
-        String errorMessageLoginLocator = "//*[@id=\"auth-container\"]/div/div[2]/div/form/div[3]";
-        WebElement errorMessageLogin = driver.findElement(By.xpath(errorMessageLoginLocator));
+        WebElement errorMessageLogin = driver.findElement(By.xpath(onlinerPage.errorMessageLoginLocator));
         String actual = errorMessageLogin.getText();
         Assertions.assertEquals("Укажите ник или e-mail", actual);
-
-        String errorMessagePasswordLocator = "//*[@id=\"auth-container\"]/div/div[2]/div/form/div[2]/div/div/div[2]/div";
-        WebElement errorMessagePassword = driver.findElement(By.xpath(errorMessagePasswordLocator));
+        WebElement errorMessagePassword = driver.findElement(By.xpath(onlinerPage.errorMessagePasswordLocator));
         String actualPassword = errorMessagePassword.getText();
         Assertions.assertEquals("Укажите пароль", actualPassword);
     }
@@ -37,27 +33,18 @@ public class WebSiteTest {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://devby.io");
-
-        String enterButtonLocator = "/html/body/div[2]/header/div[1]/div[3]/a";
-        WebElement enterButton = driver.findElement(By.xpath(enterButtonLocator));
+        DevByPage devByPage = new DevByPage();
+        WebElement enterButton = driver.findElement(By.xpath(devByPage.enterButtonLocator));
         enterButton.click();
         Thread.sleep(4000);
-
-        String inputTextLoginLocator = "//*[@id=\"root\"]/div/div/div/div/div/div/form/ul/li[1]/input";
-        WebElement inputTextLogin = driver.findElement(By.xpath(inputTextLoginLocator));
+        WebElement inputTextLogin = driver.findElement(By.xpath(devByPage.inputTextLoginLocator));
         inputTextLogin.sendKeys("webgetd");
-
-        String inputTextPasswordLocator = "//*[@id=\"root\"]/div/div/div/div/div/div/form/ul/li[2]/div/input";
-        WebElement inputTextPassword = driver.findElement(By.xpath(inputTextPasswordLocator));
+        WebElement inputTextPassword = driver.findElement(By.xpath(devByPage.inputTextPasswordLocator));
         inputTextPassword.sendKeys("321");
-
-        String enterButtonFormLocator = "//*[@id=\"root\"]/div/div/div/div/div/div/form/button";
-        WebElement enterButtonForm = driver.findElement(By.xpath(enterButtonFormLocator));
+        WebElement enterButtonForm = driver.findElement(By.xpath(devByPage.enterButtonFormLocator));
         enterButtonForm.click();
         Thread.sleep(4000);
-
-        String textErrorLoginPasswordLocator = "//*[@id=\"root\"]/div/div/div/div/div/div/form/span";
-        WebElement textErrorLoginPassword = driver.findElement(By.xpath(textErrorLoginPasswordLocator));
+        WebElement textErrorLoginPassword = driver.findElement(By.xpath(devByPage.textErrorLoginPasswordLocator));
         String actual = textErrorLoginPassword.getText();
         Assertions.assertEquals("Неверный логин или пароль.", actual);
         driver.quit();
@@ -76,5 +63,32 @@ public class WebSiteTest {
         WebElement enterTitleForm = driver.findElement(By.xpath(enterTitleFormLocator));
         String actual = enterTitleForm.getText();
         Assertions.assertEquals("НАЧАТЬ", actual);
+    }
+
+    @Test
+    public void testAvBy() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://av.by/");
+        AvBy avBy=new AvBy();
+
+        WebElement enterButton = driver.findElement(By.xpath(avBy.buttonEnter));
+        enterButton.click();
+        Thread.sleep(2000);
+        WebElement buttonLoginPassword = driver.findElement(By.xpath(avBy.buttonLoginPassword));
+        buttonLoginPassword.click();
+        Thread.sleep(2000);
+        WebElement inputLoginField = driver.findElement(By.xpath(avBy.inputLoginField));
+        inputLoginField.sendKeys("add");
+        WebElement inputPasswordField = driver.findElement(By.xpath(avBy.inputPasswordField));
+        inputPasswordField.sendKeys("rew");
+        WebElement buttonForm = driver.findElement(By.xpath(avBy.buttonForm));
+        buttonForm.click();
+        Thread.sleep(2000);
+        WebElement textError = driver.findElement(By.xpath(avBy.textError));
+        String actual = textError.getText();
+        Assertions.assertEquals("Неверный логин или пароль. Если забыли пароль, восстановите его", actual);
+        driver.quit();
+
     }
 }
