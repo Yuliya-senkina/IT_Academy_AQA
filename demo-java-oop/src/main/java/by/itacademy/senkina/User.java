@@ -1,9 +1,10 @@
 package by.itacademy.senkina;
 
 public class User {
-    public String name;
-    public String password;
-    public int age;
+    private String name;
+    private String password;
+    private int age;
+    private Adress adress;
 
     public void setName(String name){
         this.name=name;
@@ -28,5 +29,13 @@ public class User {
 
     public int getAge() {
         return age;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
     }
 }
