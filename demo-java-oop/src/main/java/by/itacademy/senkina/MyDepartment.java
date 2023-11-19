@@ -18,6 +18,10 @@ public class MyDepartment {
         worker2.setPosition(position2);
         String position = worker2.getPosition().getName();
         System.out.println(position);
+        position2.setName("Director");
+        System.out.println(worker2.getPosition().getName());
+        worker2.setPosition(position1);
+        System.out.println(worker2.getPosition().getName());
     }
 
 
